@@ -109,12 +109,24 @@ app.post('/auth/register', function(req, res){
 
   let newUser = new User(req.body)
 
-  newUser.save( req.body , function(err){
-    console.log('user saved....')
-    req.login(req.body, function(){
-      res.redirect('/api/users')   
+  User.find({email: req.body.email}, function(err, results){
+
+    if(results !== null && results.length > 0) { 
+      let record = {}
+      record.msg = "record already exists" ;      
+      record.data = results
+      res.json(record)
+      return 
+    }
+    newUser.save( req.body , function(err){
+      console.log('user saved....')
+      req.login(req.body, function(){
+        res.redirect('/api/users')   
+      })
     })
   })
+
+  
   
 
 })
