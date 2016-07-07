@@ -1,42 +1,33 @@
-<<<<<<< HEAD
-let bodyParser = require('body-parser');
-let express = require('express');
-let cookieParser = require('cookie-parser');
-let session = require('express-session');
-let passport = require('passport');
-let LocalStrategy = require('passport-local').Strategy;
-let renderFile = require('ejs').renderFile
+const bodyParser = require('body-parser');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const renderFile = require('ejs').renderFile
 
-let project = require('./package.json')
-let mongoose = require('mongoose')
-let Schema = mongoose.Schema;
+const project = require('./package.json')
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
-let app = express()
+const app = express()
 
-let PORT = process.env.PORT || 3000 
+const PORT = process.env.PORT || 3000
+const dbLoc = 'mongodb://localhost/'+ project.name
 
 
 
 if (process.env.NODE_ENV = "development"){
-  let dbLoc = 'mongodb://localhost/'+ project.name + '_dev'
-  
+  dbLoc +="_dev"
   mongoose.connect(dbLoc , (err, db)=>{
     // mongoose.connection.db.dropDatabase();
     console.log("\n\n===== Connected to: " + dbLoc +  "=====\n\n")
   })
 
 } else {
-  mongoose.connect('mongodb://localhost/'+ project.name + '_production')
+  dbLoc += "_production"
+  mongoose.connect(dbLoc)
 }
-=======
-const bodyParser = require('body-parser')
-const express = require('express')
-const renderFile = require('ejs').renderFile
-const app = express()
-
-const theRoot = __dirname + '/dist/',
-	PORT = process.env.PORT || 3000 
->>>>>>> upstream/master
 
 // got env port for heroku or elsewhere, else set to 3000 for dev
 app.set('port', PORT)
