@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let bodyParser = require('body-parser');
 let express = require('express');
 let cookieParser = require('cookie-parser');
@@ -27,6 +28,15 @@ if (process.env.NODE_ENV = "development"){
 } else {
   mongoose.connect('mongodb://localhost/'+ project.name + '_production')
 }
+=======
+const bodyParser = require('body-parser')
+const express = require('express')
+const renderFile = require('ejs').renderFile
+const app = express()
+
+const theRoot = __dirname + '/dist/',
+	PORT = process.env.PORT || 3000 
+>>>>>>> upstream/master
 
 // got env port for heroku or elsewhere, else set to 3000 for dev
 app.set('port', PORT)
