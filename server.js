@@ -15,9 +15,15 @@ let app = express()
 let PORT = process.env.PORT || 3000 
 
 
+
 if (process.env.NODE_ENV = "development"){
-  console.log('connecting to mongodb://localhost/' + project.name + '_dev')
-  mongoose.connect('mongodb://localhost/'+ project.name + '_dev')
+  let dbLoc = 'mongodb://localhost/'+ project.name + '_dev'
+  
+  mongoose.connect(dbLoc , (err, db)=>{
+    // mongoose.connection.db.dropDatabase();
+    console.log("\n\n===== Connected to: " + dbLoc +  "=====\n\n")
+  })
+
 } else {
   mongoose.connect('mongodb://localhost/'+ project.name + '_production')
 }
@@ -64,7 +70,7 @@ passport.serializeUser( function(user, done){
 })
 
 passport.deserializeUser( function(user, done){
-  console.log('okkkkaaay', user)
+  console.log('so DEseriallll', user)
   done(null, user)
 })
 
@@ -78,7 +84,12 @@ passport.use(new LocalStrategy({
     password: pw
   };
 
-  done(null, user);
+  User.findOne({"email": user.username}, function(err, results){
+    if(err){ done('user not found', null) }
+    console.log('user FOUND!')
+    done(null, results);
+
+  })
 
 }))
 
@@ -91,6 +102,10 @@ app.get('/', function (req, res) {
 //get and render the register page
 app.get('/register', function (req, res) {
   res.render('register');
+});
+
+app.get('/login', function (req, res) {
+  res.render('login');
 });
 
 app.get('/welcome', function (req, res) {
@@ -119,17 +134,23 @@ app.post('/auth/register', function(req, res){
       return 
     }
     newUser.save( req.body , function(err){
-      console.log('user saved....')
+      console.log('user saved....', 'logging in ---> ')
       req.login(req.body, function(){
         res.redirect('/api/users')   
       })
     })
   })
-
-  
-  
-
 })
+
+app.post('/auth/login', passport.authenticate('local',
+  { 
+    failureRedirect: '/forbidden'
+  }),
+  function(req, res){
+    console.log('wahhht?')
+    res.redirect('/api/users')
+  }
+)
 
 app.get('/api/users', function(req, res){
   User.find({}, function(err, results){
