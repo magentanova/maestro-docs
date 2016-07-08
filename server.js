@@ -13,17 +13,19 @@ const Schema = mongoose.Schema;
 const app = express()
 
 const PORT = process.env.PORT || 3000
-const dbLoc = 'mongodb://localhost/'+ project.name
+let dbLoc = 'mongodb://localhost/'+ project.name
 
-
+const checkAuth = function(req, res, next){
+  if(!req.user) res.redirect('/login')
+    else next()
+}
 
 if (process.env.NODE_ENV = "development"){
-  dbLoc +="_dev"
+  dbLoc += "_dev"
   mongoose.connect(dbLoc , (err, db)=>{
     // mongoose.connection.db.dropDatabase();
     console.log("\n\n===== Connected to: " + dbLoc +  "=====\n\n")
   })
-
 } else {
   dbLoc += "_production"
   mongoose.connect(dbLoc)
@@ -66,30 +68,39 @@ app.use( passport.session() );
 
 // Passport Config
 passport.serializeUser( function(user, done){
-  console.log('so seriallll', user)
-  done(null, user);
+  console.log('so serialll')
+  done(null, user.id);
 })
 
-passport.deserializeUser( function(user, done){
-  console.log('so DEseriallll', user)
-  done(null, user)
+passport.deserializeUser( function(userId, done){
+  console.log('so DEseriallll', userId)
+  User.findById(userId, function(err, record){
+
+    let userForReq = {
+      email: record.email,
+      _id: record._id
+    }
+
+    done(null, userForReq)
+  })
 })
 
 passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
-}, function(usrNm, pw, done){
-  
-  let user = {
-    username: usrNm,
-    password: pw
-  };
-
-  User.findOne({"email": user.username}, function(err, results){
-    if(err){ done('user not found', null) }
-    console.log('user FOUND!')
-    done(null, results);
-
+}, function(inputUser, inputPW, done){
+  console.log(inputUser)
+  User.findOne({"email": inputUser}, function(err, results){
+    if(err){ 
+      done(null , false, {message: "user no exist"})
+      return 
+    }
+    if(results.password !== inputPW){
+      done(null, false, {message: "Bad Password"} )
+      return
+    }
+    done(null, results); 
+    //calls req.login(results)
   })
 
 }))
@@ -106,11 +117,16 @@ app.get('/register', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
+  console.log("CURRENT SESSION", req.session)
+
   res.render('login');
 });
 
-app.get('/welcome', function (req, res) {
-  res.render('welcome');
+app.get('/dashboard', checkAuth, function (req, res) {
+  console.log("CURRENT SESSION", req.session)
+
+  console.log("CURRENT USER:", req.user)
+  res.render('dashboard');
 });
 
 app.get('/forbidden', function (req, res) {
@@ -119,7 +135,6 @@ app.get('/forbidden', function (req, res) {
 
 
 app.post('/auth/register', function(req, res){
-  console.log('WHAAAT???')
   console.log(req.body)
   // passport appends to request
 
@@ -149,7 +164,7 @@ app.post('/auth/login', passport.authenticate('local',
   }),
   function(req, res){
     console.log('wahhht?')
-    res.redirect('/api/users')
+    res.redirect('/dashboard')
   }
 )
 
