@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
 
 module.exports = {
    connectToDB: function(projectName){
@@ -15,18 +14,5 @@ module.exports = {
         dbLocation += "_production"
         mongoose.connect(dbLocation)
       }  
-    },
-
-  setupSchema: function(){
-    const userSchema = new Schema({
-      email: String,
-      password: String
-    })
-
-    let User = mongoose.model('User', userSchema)
-    
-    return {
-      User: User
     }
-  }
 }

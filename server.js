@@ -8,7 +8,7 @@ const {renderFile} = require('ejs')
 const appKeys = require('./config/secrets.js')
 const appAuthentication = require('./config/auth.js')
 const connectToDB = require('./config/db-setup.js').connectToDB
-const setupSchema = require('./config/db-setup.js').setupSchema
+let { User, Post } = require('./db/schema.js')
 
 const app = express()
 
@@ -20,8 +20,6 @@ const checkAuth = function(req, res, next){
   if(!req.user) res.redirect('/login')
     else next()
 }
-
-
 
 
 // got env port for heroku or elsewhere, else set to 3000 for dev
@@ -36,7 +34,7 @@ app.set('view engine', 'html');
 // DATABASE
 // =========
 connectToDB("tiy-starter-kit")
-let { User } = setupSchema()
+
 
 
 // =========
@@ -88,7 +86,6 @@ app.get('/forbidden', function (req, res) {
 
 
 app.post('/auth/register', function(req, res){
-  console.log(req.body)
   // passport appends to request
 
   let newUser = new User(req.body)
@@ -102,7 +99,7 @@ app.post('/auth/register', function(req, res){
       res.json(record)
       return 
     }
-    newUser.save( req.body , function(err){
+    newUser.save(function(err){
       console.log('user saved....', 'logging in ---> ')
       req.login(req.body, function(){
         res.redirect('/api/users')   
@@ -124,6 +121,19 @@ app.post('/auth/login', passport.authenticate('local',
 app.get('/api/users', function(req, res){
   User.find({}, function(err, results){
     res.json(results)
+  })
+})
+
+app.get('/api/posts', function(req, res){
+  Post.find({}, function(err, results){
+    res.json(results)
+  })
+})
+app.post('/api/posts', function(req, res){
+  let newPost = new Post(req.body)
+  newPost.save(function(err){
+    if(err) return res.json({message: 'error saving'})
+      res.json(newPost)
   })
 })
 
