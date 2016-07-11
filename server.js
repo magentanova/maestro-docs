@@ -3,7 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-const {renderFile} = require('ejs')
+const renderFile = require('ejs').renderFile
 
 // Load Configuration
 const appSecrets = require('./config/secrets.js')
@@ -16,7 +16,7 @@ let authRouter = require('./routes/authRouter.js')
 let apiRouter = require('./routes/apiRouter.js')
 
 // Load DB User Model (for appAuthentication configuration)
-let { User } = require('./db/schema.js')
+let User = require('./db/schema.js').User
 
 
 // =========
@@ -56,9 +56,9 @@ appAuthentication(User)
 // ROUTERS
 // =========
 
-app.use('/', indexRouter)
-app.use('/auth', authRouter)
-app.use('/api', apiRouter)
+app.use( '/', indexRouter )
+app.use( '/auth', authRouter )
+app.use( '/api', apiRouter )
 
 app.listen(PORT,function() {
 	console.log('\n\n===== listening for requests on port ' + PORT + ' =====\n\n')

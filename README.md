@@ -1,20 +1,28 @@
-#TIY Starter Kit
+#TIY Full Stack
 
-Lightweight scaffolding and build tools to quickly and easily develop a web application. 
-
-  - transpiles scss into css
-  - transpiles es6 and jsx into es5
-  - concatenates all required/imported modules together into one minified file
-  - runs a simple express server that is deployable on heroku
-  
 ##Getting started
 
-  - clone this repo with `git clone git@github.com:magentanova/tiy-starter-kit.git THE-LOCAL-FOLDER-YOU-WANT-TO-CREATE`
+###Set up the build system
+  - clone this repo with `git clone git@github.com:magentanova/tiy-full-stack.git THE-LOCAL-FOLDER-YOU-WANT-TO-CREATE`
   - disconnect from my remote repo and point to your own (see [Publishing](#publishing))
   - `cd` into the local folder
   - `npm install`
   - `npm run go`
-  - that's it! visit [http://localhost:3000](http://localhost:3000) to make sure it's working
+  - visit [localhost:3000](http://localhost:3000) to make sure it's working
+  
+###Set up mongo db
+
+  - `brew install mongodb`
+  - `sudo mkdir -p /data/db`
+  - `sudo chown -R $(whoami) /data/`
+  - `mongod`
+  - if your console output ends with something like "waiting for connections on port XXXXX", then your database is listening for queries. you're good to go.
+
+###Install postman
+
+  - https://www.getpostman.com/
+  - this chrome extension allows you to test POST requests to your api endpoints much more easily and quickly than you could by writing JavaScript. 
+  - you can set headers, write JSON into the request body, and use tabs to track multiple requests at once.
   
 ##Workflow
   

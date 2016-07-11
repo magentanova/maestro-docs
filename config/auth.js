@@ -26,7 +26,7 @@ module.exports = function(UserModel){
 
   passport.serializeUser( function(user, done){
     done(null, user.id);
-  })
+  } )
 
   passport.deserializeUser( function(userId, done){
     UserModel.findById(userId, function(err, record){

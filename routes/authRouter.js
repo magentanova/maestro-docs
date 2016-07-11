@@ -1,6 +1,6 @@
 let Router = require('express').Router;
 let passport = require ('passport')
-let { User } = require('../db/schema.js')
+let User = require('../db/schema.js').User
 
 
 const authRouter = Router()
@@ -9,7 +9,6 @@ const authRouter = Router()
 authRouter
   .post('/register', function(req, res){
     // passport appends to request
-    console.log(req.body)
     let newUser = new User(req.body)
 
     User.find({email: req.body.email}, function(err, results){
@@ -40,7 +39,7 @@ authRouter
       failureRedirect: '/forbidden'
     }),
     function(req, res){
-      res.redirect('/dashboard')
+      res.cookie("userId",req.user._id).redirect('/dashboard')
     }
   )
 
