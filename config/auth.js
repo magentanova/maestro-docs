@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(UserModel){
   let authFields = {
-      usernameField: 'username',
+      usernameField: 'email',
       passwordField: 'password'
   }
 

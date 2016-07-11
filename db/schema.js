@@ -3,8 +3,8 @@ const createModel = mongoose.model;
 const Schema = mongoose.Schema;
 
 const usersSchema = new Schema({
-    // REQUIRED: Do Not Touch
-    username: String,
+    // REQUIRED FOR AUTHENTICATION: Do Not Touch
+    email: String,
     password: String,
 
     //Add yours here 
