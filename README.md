@@ -10,13 +10,16 @@
   - `npm run go`
   - visit [localhost:3000](http://localhost:3000) to make sure it's working
   
-###Set up mongo db
+###Set up mongo db 
 
-  - `brew install mongodb`
-  - `sudo mkdir -p /data/db`
-  - `sudo chown -R $(whoami) /data/`
-  - `mongod`
-  - if your console output ends with something like "waiting for connections on port XXXXX", then your database is listening for queries. you're good to go.
+  - install (only need to do this once)
+    - `brew install mongodb`
+    - `sudo mkdir -p /data/db`
+    - `sudo chown -R $(whoami) /data/`
+  
+  - run the database
+    - `mongod`
+    - if your console output ends with something like "waiting for connections on port XXXXX", then your database is listening for queries. you're good to go.
 
 ###Install postman
 
