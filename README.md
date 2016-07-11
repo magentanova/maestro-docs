@@ -41,6 +41,7 @@
 The easiest thing to do is deploy to heroku. Once you have an account and you've installed the heroku command line tools, simply run: 
  
   - `heroku create YOUR-APP-NAME`
+  - `heroku addons:create mongolab`
   - `git push origin heroku`
 
 Have fun!
