@@ -3,12 +3,14 @@ const mongoose = require('mongoose')
 module.exports = {
    connectToDB: function(projectName){
       console.log('running db-setup')
+      let dbLocation = 'mongodb://localhost/'+ projectName
 
       if (process.env.NODE_ENV = "development"){
-        let dbLocation = 'mongodb://localhost/'+ projectName
         dbLocation += "_dev"
         mongoose.connect(dbLocation , (err, db)=>{
-          // mongoose.connection.db.dropDatabase();
+          if (err) {
+            console.log(err)
+          }
           console.log("\n\n===== Connected to: " + dbLocation +  "=====\n\n")
         })
       } else {
