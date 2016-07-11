@@ -4,14 +4,36 @@ const Schema = mongoose.Schema;
 
 const usersSchema = new Schema({
     // REQUIRED FOR AUTHENTICATION: Do Not Touch
-    email: String,
-    password: String,
+  email: {
+    type: String,
+    required: true
+  },
+
+  password: {
+    type: String,
+    required: true
+  },
 })
 
 const postsSchema = new Schema({
-  title: String, 
-  body: String,
-  user: Object
+  title: {
+    type: String,
+    required: true
+  },
+
+  subtitle: {
+    type: String
+  },
+
+  body: {
+    type: String,
+    required: [true, "No body-content, pls add"]
+  },
+
+  user: {
+    type: Object,
+    required: [true, "No user supplied"]
+  }
 })
 
 module.exports = {
