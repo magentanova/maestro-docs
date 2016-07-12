@@ -31,8 +31,8 @@ authRouter
 
 authRouter
   .get('/login', function (req, res) {
-
-    res.json(req.session);
+    if (req.user) res.status(200).json(req.user);
+      else res.status(403).json({message: "Forbidden: user no longer authenticated"})
   })
   .post('/login', passport.authenticate('local',
     { 
@@ -42,5 +42,12 @@ authRouter
       res.cookie("userId",req.user._id).redirect('/dashboard')
     }
   )
+
+  authRouter
+    .get('/logout', function (req, res) {
+      if (req.user) req.logout();
+      res.redirect('/')
+    })
+
 
 module.exports = authRouter

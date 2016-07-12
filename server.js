@@ -6,6 +6,7 @@ const passport = require('passport');
 const renderFile = require('ejs').renderFile
 
 // Load Configuration
+const appMiddleWare = require('./config/middleware.js')
 const appSecrets = require('./config/secrets.js')
 const appAuthentication = require('./config/auth.js')
 const connectToDB = require('./config/db-setup.js').connectToDB
@@ -59,6 +60,8 @@ appAuthentication(User)
 app.use( '/', indexRouter )
 app.use( '/auth', authRouter )
 app.use( '/api', apiRouter )
+
+app.use(appMiddleWare.errorHandler);
 
 app.listen(PORT,function() {
 	console.log('\n\n===== listening for requests on port ' + PORT + ' =====\n\n')

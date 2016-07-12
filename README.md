@@ -17,12 +17,24 @@
   - `sudo chown -R $(whoami) /data/`
 
   
-###Install postman (once)
+###Install Postman (once)
 
   - https://www.getpostman.com/
   - this chrome extension allows you to test POST requests to your api endpoints much more easily and quickly than you could by writing JavaScript. 
   - you can set headers, write JSON into the request body, and use tabs to track multiple requests at once.
-  
+
+### Install MongoChef
+
+  - http://3t.io/mongochef/download/core/
+  - This application allows you to inspect and modify your Mongo databases allowing you to quickly read/add/edit/delete documents(records)
+  - Once installed:
+    1. Go to `Connect` --> `New Connection`
+    2. Enter name of database (e.g. *My Localhost DB*)
+    3. Enter the values for Server|Port: 
+       **Server**: `localhost` | **Port**: `27017`
+    4. Click `Save Connection` 
+      (you should see the db available on the left panel)
+    5. Click `Connect` on the bottom right to connect and inspect
 
 ##Workflow
 
