@@ -44,14 +44,11 @@ apiRouter
   })
   //delete one
   .delete('/posts/:_id', (req, res, next) => {
-    Post.findOne(req.params, (err, record) => {
-      if(err || !record) return res.json(err)
-      record.remove(function(err){
-        if(err) return res.json(err)
-        res.json({
-          msg: `record ${req.params._id} successfully deleted`,
-          _id: req.params._id
-        })
+    Post.remove({ _id: req.params._id}, (err) => {
+      if(err) return res.json(err)
+      res.json({
+        msg: `record ${req.params._id} successfully deleted`,
+        _id: req.params._id
       })
     })  
   })
