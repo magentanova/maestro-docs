@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 const createModel = mongoose.model.bind(mongoose);
 const Schema = mongoose.Schema;
 
+// ----------------------
+// USERS
+// ----------------------
 const usersSchema = new Schema({
-    // REQUIRED FOR AUTHENTICATION: Do Not Touch
+  // REQUIRED FOR AUTHENTICATION: Do Not Touch
   email: {
     type: String,
     required: true
@@ -13,8 +16,13 @@ const usersSchema = new Schema({
     type: String,
     required: true
   },
+  // .........................................
+  
 })
 
+// ----------------------
+// POSTS
+// ----------------------
 const postsSchema = new Schema({
   title: {
     type: String,
