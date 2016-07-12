@@ -6,12 +6,12 @@ const Schema = mongoose.Schema;
 // POSTS
 // ----------------------
 const postsSchema = new Schema({
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
   title:     { type: String, required: true },
   subtitle:  { type: String },
   body:      { type: String, required: [true, "No body-content, pls add"] },
   user:      {
-                email: { required: [true, "No user email supplied"] }
+                email: { type: String, required: [true, "No user email supplied"] },
                 _id:   { type: Number, required: true }
              }
 })
@@ -26,7 +26,7 @@ const usersSchema = new Schema({
   // x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
   
    // example of optional fields
-  name:      { type: String }
+  name:      { type: String },
   createdAt: { type: Date, default: Date.now }
 
 })
