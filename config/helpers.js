@@ -9,6 +9,8 @@ const sanitizeUser = function(userRecord){
 }
 
 const updateFields = function(record, resBody){
+  if (resBody.password) delete req.body.password
+
   for (var prop in resBody) {
     record[prop] = resBody[prop]
   }

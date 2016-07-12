@@ -8,7 +8,7 @@ let Post = require('../db/schema.js').Post
 
 apiRouter
   //fetch many
-  .get('/posts/', function(req, res, next){
+  .get('/posts', function(req, res, next){
     Post.find(req.query, function(err, results){
       if(err) return res.json(err) 
       res.json(results)
@@ -58,26 +58,23 @@ apiRouter
 
   apiRouter
     .get('/users', function(req, res, next){
-      User.find(req.query, function(err, results){
+      User.find(req.query , "-password", function(err, results){
         if(err) return res.json(err) 
-        let sanitizedUsers = results.map(helpers.sanitizeUser)
-        res.json(sanitizedUsers)
+        res.json(results)
       })
     })
 
   apiRouter
     .get('/users/:_id', function(req, res, next){
-      User.findOne(req.params, function(err, record){
-        if(err || !results ) return res.json(err) 
-        let sanitizedUser = helpers.sanitizeUser(record)
-        res.json(sanitizedUser)
+      User.findById(req.params._id, "-password", function(err, record){
+        if(err || !record ) return res.json(err) 
+        res.json(record)
       })
     })
     .put('/users/:_id', function(req, res, next){
-      User.findOne(req.params, function(err, record){
-        if(err || !record) return res.json(err) 
-        let sanitizedUser = helpers.sanitizeUser(record)
-        let recordWithUpdates = helpers.updateFields(sanitizedUser, req.body)
+      User.findById(req.params._id, "-password",function(err, record){
+        if(err || !record) return res.json(err)
+        let recordWithUpdates = helpers.updateFields(record, req.body)
         recordWithUpdates.save(function(err){
           if(err) return res.json(err) 
           res.json(recordWithUpdates)
@@ -85,16 +82,12 @@ apiRouter
       })
     })
     .delete('/users/:_id', function(req, res, next){
-      User.findOne(req.params, (err, record) => {
-        if(err || !record) return res.json(err)
-        record.remove(function(err){
-          if(err) return res.json(err)
-          res.json({
-            msg: `record ${req.params._id} successfully deleted`,
-            _id: req.params._id
-          })
+      User.remove({ _id: req.params._id}, (err) => {
+        if(err) return res.json(err)
+        res.json({
+          msg: `record ${req.params._id} successfully deleted`,
+          _id: req.params._id
         })
-        
       })  
     })
 
