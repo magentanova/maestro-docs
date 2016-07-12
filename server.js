@@ -6,7 +6,7 @@ const passport = require('passport');
 const renderFile = require('ejs').renderFile
 
 // Load Configuration
-const appMiddleWare = require('./config/middleware.js')
+const appMiddleWare = require('./config/utility-middleware.js')
 const appSecrets = require('./config/secrets.js')
 const appAuthentication = require('./config/auth.js')
 const connectToDB = require('./config/db-setup.js').connectToDB
