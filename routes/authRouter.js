@@ -41,13 +41,14 @@ authRouter
   .post('/login', passport.authenticate('local'),
     function(req, res){
       console.log('logging in', req.user)
-      res.json(req.user)
+      let userCopy = JSON.parse(JSON.stringify(req.user))
+      userCopy.password = ''
+      res.json(userCopy)
     }
   )
   authRouter
     .get('/logout', function (req, res) {
       if (req.user) {
-        console.log(req.user)
         let email = req.user.email
         req.logout()
         req.json({
