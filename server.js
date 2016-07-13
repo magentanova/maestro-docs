@@ -37,7 +37,7 @@ app.set('view engine', 'html');
 // =========
 // DATABASE
 // =========
-connectToDB("tiy-starter-kit")
+connectToDB(process.env.npm_config_name)
 
 // =========
 // APPLICATION MIDDLEWARE 

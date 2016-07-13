@@ -2,9 +2,7 @@ let Router = require('express').Router;
 let passport = require ('passport')
 let User = require('../db/schema.js').User
 
-
 const authRouter = Router()
-
 
 authRouter
   .post('/register', function(req, res){
@@ -37,27 +35,19 @@ authRouter
 
 authRouter
   .get('/checkAuth', function (req, res) {
-    // console.log(req.user)
-    // console.log(req.session)
-    // console.log(req.cookies)
-    // console.log(req.body['cookie.sid'] === req.user._id)
-    // console.log(req.body['cookie.uid'] === req.cookies['cooki'] )
     if (req.user) res.json(req.user);
       else res.json({message: "Forbidden: user no longer authenticated"})
   })
-  .post('/login', passport.authenticate('local',
-    { 
-      failureRedirect: '/forbidden'
-    }),
+  .post('/login', passport.authenticate('local'),
     function(req, res){
-      console.log('running basic route callback')
-      res.cookie("userId",req.user._id).json(req.user)
+      console.log('logging in', req.user)
+      res.json(req.user)
     }
   )
-
   authRouter
     .get('/logout', function (req, res) {
       if (req.user) {
+        console.log(req.user)
         let email = req.user.email
         req.logout()
         req.json({
