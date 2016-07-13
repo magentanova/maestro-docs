@@ -8,6 +8,7 @@
   - disconnect from my remote repo and point to your own (see [Publishing](#publishing))
   - `cd` into the local folder
   - `npm install`
+  - `npm config set name YOUR-APP-NAME`. this will ensure that mongo stores your app's data in a unique location.
   
 
 ###Install mongodb (once)
@@ -38,7 +39,7 @@
 
 ##Workflow
 
-  - run the database with `mongod`
+  - run the database with `mongod`.
     - if your console output ends with something like "waiting for connections on port XXXXX", then your database is listening for queries. you're good to go.
     - if your connection was refused, the database may already be running. you can leave it alone, or, to be sure, you can kill all running mongo processes with `kill $(pgrep mongo)`, and then run `mongod` again.
 
@@ -51,6 +52,7 @@
 
   - disconnect your local repo from this one with `git remote remove origin`
   - `hub create YOUR-APP-NAME` -- this will simultaneously (1) create you a remote repo with the given name and (2) create a local reference connecting the directory you're in to the remote you just created
+  - delete this README from your project. write your own if you have time.
   - add, commit and push per usual
 
 
