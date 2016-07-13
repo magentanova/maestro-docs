@@ -50,7 +50,7 @@ app.use( session({secret: appSecrets.sessionSecret }) );
 app.use( passport.initialize() );
 app.use( passport.session() );
 appAuthentication(User)
-
+app.use( appMiddleWare.putCookieOnRes )
 
 // 
 // =========

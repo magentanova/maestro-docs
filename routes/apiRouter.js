@@ -8,14 +8,14 @@ let Post = require('../db/schema.js').Post
 
 apiRouter
   //fetch many
-  .get('/posts', function(req, res, next){
+  .get('/posts', function(req, res){
     Post.find(req.query, function(err, results){
       if(err) return res.json(err) 
       res.json(results)
     })
   })
   //create one
-  .post('/posts', function(req, res, next){
+  .post('/posts', function(req, res){
     let newPost = new Post(req.body)
     newPost.save(function(err){
       if(err) return res.json(err) 
@@ -26,14 +26,14 @@ apiRouter
 
 apiRouter
   //fetch one
-  .get('/posts/:_id', function(req, res, next){
+  .get('/posts/:_id', function(req, res){
     Post.findById(req.params._id, function(err, record){
       if(err || !record) return res.json(err)  
       res.json(record)
     })
   })
   //edit one
-  .put('/posts/:_id', function(req, res, next) {
+  .put('/posts/:_id', function(req, res) {
     Post.findById(req.params._id, function(err,record) {
       let recordWithUpdates = helpers.updateFields(record,req.body)
       recordWithUpdates.save(function(err){
@@ -43,7 +43,7 @@ apiRouter
     })
   })
   //delete one
-  .delete('/posts/:_id', (req, res, next) => {
+  .delete('/posts/:_id', (req, res) => {
     Post.remove({ _id: req.params._id}, (err) => {
       if(err) return res.json(err)
       res.json({
@@ -54,7 +54,7 @@ apiRouter
   })
 
   apiRouter
-    .get('/users', function(req, res, next){
+    .get('/users', function(req, res){
       User.find(req.query , "-password", function(err, results){
         if(err) return res.json(err) 
         res.json(results)
@@ -62,13 +62,13 @@ apiRouter
     })
 
   apiRouter
-    .get('/users/:_id', function(req, res, next){
+    .get('/users/:_id', function(req, res){
       User.findById(req.params._id, "-password", function(err, record){
         if(err || !record ) return res.json(err) 
         res.json(record)
       })
     })
-    .put('/users/:_id', function(req, res, next){
+    .put('/users/:_id', function(req, res){
       User.findById(req.params._id, "-password",function(err, record){
         if(err || !record) return res.json(err)
         let recordWithUpdates = helpers.updateFields(record, req.body)
@@ -78,7 +78,7 @@ apiRouter
         })
       })
     })
-    .delete('/users/:_id', function(req, res, next){
+    .delete('/users/:_id', function(req, res){
       User.remove({ _id: req.params._id}, (err) => {
         if(err) return res.json(err)
         res.json({

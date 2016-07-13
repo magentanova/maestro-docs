@@ -10,6 +10,7 @@ module.exports = function(UserModel){
 
   let onLogin = function(inputUser, inputPW, done){
       UserModel.findOne({"email": inputUser}, function(err, results){
+        console.log('running onlogin')
         if(err){  
           //will trigger failure callback
           done(null , false, {message: "user no exist"})   
@@ -29,14 +30,8 @@ module.exports = function(UserModel){
   } )
 
   passport.deserializeUser( function(userId, done){
-    UserModel.findById(userId, function(err, record){
-
-      let userForReq = {
-        email: record.email,
-        _id: record._id
-      }
-
-      done(null, userForReq)
+    UserModel.findById(userId, "-password", function(err, record){
+      done(null, record)
     })
   })
 

@@ -23,7 +23,7 @@
   - this chrome extension allows you to test POST requests to your api endpoints much more easily and quickly than you could by writing JavaScript. 
   - you can set headers, write JSON into the request body, and use tabs to track multiple requests at once.
 
-### Install MongoChef
+### Install MongoChef (once, optional)
 
   - http://3t.io/mongochef/download/core/
   - This application allows you to inspect and modify your Mongo databases allowing you to quickly read/add/edit/delete documents(records)
