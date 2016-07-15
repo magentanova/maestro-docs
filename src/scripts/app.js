@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom'
 import LoginPage from './LoginPage'
 import $ from 'jquery'
 import Backbone from 'backbone'
-
-export const APP_NAME = 'ENTER YOUR APP NAME HERE! NO WHITESPACES!'
+import init from './init'
 
 const app = function() {
 
 }
 
+// VVV don't touch! VVV 
+// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+export const app_name = init()
 app()
+// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x

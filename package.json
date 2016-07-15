@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "go": "npm run watch && npm run dev",
+    "deploy": "git push origin master && git push heroku master",
     "dev": "NODE_ENV=development node --use_strict server.js", 
     "initdb": "mongod & npm config set name",
     "killmongo": "bash kill.sh mongo",

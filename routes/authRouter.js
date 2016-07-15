@@ -2,32 +2,28 @@ let Router = require('express').Router;
 let passport = require ('passport')
 let User = require('../db/schema.js').User
 
+
 const authRouter = Router()
+
 
 authRouter
   .post('/register', function(req, res){
     // passport appends to request
     let newUser = new User(req.body)
-    console.log(req.body)
 
-    User.findOne({email: req.body.email}, function(err, record){
+    User.find({email: req.body.email}, function(err, results){
 
-      if(record !== null) { 
-        let msg = {}
-        msg.txt = "record already exists"      
-        msg.data = record
-        res.json(msg)
+      if(results !== null && results.length > 0) { 
+        let record = {}
+        record.msg = "record already exists" ;      
+        record.data = results
+        res.json(record)
         return 
       }
 
       newUser.save(function(err){
         req.login(req.body, function(){
-          console.log(req.session)
-          res.json({
-            user: newUser,
-            cookie: req.cookies,
-            serverSession: req.session
-          })   
+          res.json(newUser)   
         })
       })
     })
@@ -35,32 +31,39 @@ authRouter
 
 authRouter
   .get('/checkAuth', function (req, res) {
-    if (req.user) res.json(req.user);
-      else res.json({message: "Forbidden: user no longer authenticated"})
+    if (req.user) res.json({user: req.user});
+    else res.json({user: null})
   })
   .post('/login', passport.authenticate('local'),
     function(req, res){
-      console.log('logging in', req.user)
-      let userCopy = JSON.parse(JSON.stringify(req.user))
-      userCopy.password = ''
-      res.json(userCopy)
-    }
-  )
-  authRouter
-    .get('/logout', function (req, res) {
-      if (req.user) {
-        let email = req.user.email
-        req.logout()
-        req.json({
-          msg: `user ${email} logged out`
+      if (!req.user) {
+        res.status(500).json({
+          err: 'user doesnt exist'
         })
       }
       else {
-        req.json({
-          msg: 'error: no current user'
-        })
+        let userCopy = JSON.parse(JSON.stringify(req.user))
+        userCopy.password = ''
+        res.json(userCopy)        
       }
-    })
+    }
+  )
+  .get('/logout', function (req, res) {
+    if (req.user) {
+      console.log(req.user)
+      let email = req.user.email
+      req.logout()
+      res.json({
+        msg: `user ${email} logged out`
+      })
+    }
+    else {
+      res.json({
+        msg: 'error: no current user'
+      })
+    }
+  })
+
 
 
 module.exports = authRouter
