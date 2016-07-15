@@ -2,11 +2,15 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import {app_name} from '../init'
 
-const User = Backbone.Model.extend({
+
+// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+
+const UserAuthModel = Backbone.Model.extend({
 	urlRoot: '/api/users',
 	idAttribute: '_id'
 })
-User.register = function(email,password) {
+UserAuthModel.register = function(email,password) {
 	return $.ajax({
 		type: 'post',
 		url: '/auth/register',
@@ -17,7 +21,7 @@ User.register = function(email,password) {
 	})
 }
 
-User.login = function(email,password) {
+UserAuthModel.login = function(email,password) {
 	return $.ajax({
 		type: 'post',
 		url: '/auth/login',
@@ -31,15 +35,24 @@ User.login = function(email,password) {
 	})
 }
 
-User.logout = function() {
+UserAuthModel.logout = function() {
 	return $.getJSON('/auth/logout').then(()=>{
 		localStorage[app_name + '_user'] = null
 	})
 }
 
-User.getCurrentUser = function() {
+UserAuthModel.getCurrentUser = function() {
 	return localStorage[app_name + '_user'] ? JSON.parse(localStorage[app_name + '_user']) : null
 }
 
 
-export {User}
+export { UserAuthModel }
+
+// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+
+// ^^ DO NOT TOUCH ^^
+// but, you may ...
+const myUserModel = UserAuthModel.extend({
+
+})
