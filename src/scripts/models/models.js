@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import {app_name} from '../app'
+import {app_name} from '../init'
 
 const User = Backbone.Model.extend({
 	urlRoot: '/api/users',

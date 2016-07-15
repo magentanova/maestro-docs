@@ -17,4 +17,4 @@ const init = function() {
 	return app_name
 }
 
-export default init
+export default app_name = init()
