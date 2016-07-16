@@ -5,10 +5,13 @@ import Dashboard from './views/HomeView'
 import InboxView from './views/InboxView'
 import ComposeView from './views/ComposeView'
 import LoginView from './views/LoginView'
+import {MsgCollection} from './models/models'
+import {User}  from './models/models'
 import init from './init'
-import {User} from './models/models'
 
 const app = function() {
+
+
 
 	const MsgRouter = Backbone.Router.extend({
 		routes: {
@@ -32,11 +35,11 @@ const app = function() {
 		},
 
 		showMsgs: function() {
-			// var coll = new MsgCollection()
-			// coll.fetch().fail(function(err){
-			// 	console.log(err)
-			// })
-			ReactDOM.render(<InboxView />, document.querySelector('.container'))
+			var coll = new MsgCollection()
+			coll.fetch().fail(function(err){
+				console.log(err)
+			})
+			ReactDOM.render(<InboxView coll={coll} />, document.querySelector('.container'))
 		},
 
 		showMsgEditor: function() {
@@ -63,8 +66,5 @@ const app = function() {
 	new MsgRouter()
 }
 
-// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..
-// NECESSARY FOR USER FUNCTIONALITY. DO NOT CHANGE. 
 export const app_name = init()
 app()
-// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..
