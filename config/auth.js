@@ -13,10 +13,10 @@ module.exports = function(UserModel){
         console.log('running onlogin')
         if(err || !results){  
           //will trigger failure callback
-          done(null , false, {message: "user no exist"})   
+          done(null , false, {message: "no user exists with that email"})   
         } else if(results.password !== inputPW) {
           //will trigger failure callback
-          done(null, false, {message: "Bad Password"} )      
+          done(null, false, {message: "bad password"} )      
         } else {
           done(null, results); 
           //calls req.login(results)

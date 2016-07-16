@@ -32,7 +32,7 @@ User.login = function(email,password) {
 	}).then((userData) => {
 		localStorage[app_name + '_user'] = JSON.stringify(userData)
 		return userData
-	})
+	},(err)=> {console.log(err.responseText)})
 }
 
 User.logout = function() {
