@@ -1,11 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import {app_name} from '../app'
-<<<<<<< HEAD
-=======
-
->>>>>>> af10df8e260eda3f2cccdb6257b854c9d2800f47
-
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 
@@ -13,12 +8,7 @@ const User = Backbone.Model.extend({
 	urlRoot: '/api/users',
 	idAttribute: '_id'
 })
-<<<<<<< HEAD
-
-UserAuthModel.register = function(email,password) {
-=======
 User.register = function(email,password) {
->>>>>>> af10df8e260eda3f2cccdb6257b854c9d2800f47
 	return $.ajax({
 		type: 'post',
 		url: '/auth/register',
@@ -61,10 +51,6 @@ export { User }
 
 // ^^ DO NOT TOUCH ^^
 // but, you may ...
-<<<<<<< HEAD
-const AppUserModel = UserAuthModel.extend({
-=======
 const myUserModel = User.extend({
->>>>>>> af10df8e260eda3f2cccdb6257b854c9d2800f47
 
 })
