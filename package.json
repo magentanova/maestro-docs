@@ -2,7 +2,7 @@
   "name": "tiy-full-stack",
   "version": "0.0.0",
   "description": "a lightweight build system for transpiling js & scss, browserifying and running a simple node server. auto-installs backbone and react",
-  "main": "index.html",
+  "main": "index.html", 
   "scripts": {
     "go": "npm run watch && npm run dev",
     "deploy": "git push origin master && git push heroku master",

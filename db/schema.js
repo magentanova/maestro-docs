@@ -3,20 +3,6 @@ const createModel = mongoose.model.bind(mongoose);
 const Schema = mongoose.Schema;
 
 // ----------------------
-// POSTS
-// ----------------------
-const postsSchema = new Schema({
-  createdAt: { type: Date, default: Date.now },
-  title:     { type: String, required: true },
-  subtitle:  { type: String },
-  body:      { type: String, required: [true, "No body-content, pls add"] },
-  user:      {
-                email: { type: String, required: [true, "No user email supplied"] },
-                _id:   { type: Number, required: true }
-             }
-})
-
-// ----------------------
 // USERS
 // ----------------------
 const usersSchema = new Schema({
@@ -32,6 +18,5 @@ const usersSchema = new Schema({
 })
 
 module.exports = {
-  User: createModel('User', usersSchema),
-  Post: createModel('Post', postsSchema)
+  User: createModel('User', usersSchema)
 }

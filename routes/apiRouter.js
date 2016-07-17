@@ -7,51 +7,6 @@ let Post = require('../db/schema.js').Post
 
 
 apiRouter
-  //fetch many
-  .get('/posts', function(req, res){
-    Post.find(req.query, function(err, results){
-      if(err) return res.json(err) 
-      res.json(results)
-    })
-  })
-  //create one
-  .post('/posts', function(req, res){
-    let newPost = new Post(req.body)
-    newPost.save(function(err){
-      if(err) return res.json(err) 
- 
-      res.json(newPost)
-    })
-  })
-
-apiRouter
-  //fetch one
-  .get('/posts/:_id', function(req, res){
-    Post.findById(req.params._id, function(err, record){
-      if(err || !record) return res.json(err)  
-      res.json(record)
-    })
-  })
-  //edit one
-  .put('/posts/:_id', function(req, res) {
-    Post.findById(req.params._id, function(err,record) {
-      let recordWithUpdates = helpers.updateFields(record,req.body)
-      recordWithUpdates.save(function(err){
-        if(err || !record) return res.json(err) 
-        res.json(record)
-      })
-    })
-  })
-  //delete one
-  .delete('/posts/:_id', (req, res) => {
-    Post.remove({ _id: req.params._id}, (err) => {
-      if(err) return res.json(err)
-      res.json({
-        msg: `record ${req.params._id} successfully deleted`,
-        _id: req.params._id
-      })
-    })  
-  })
 
   apiRouter
     .get('/users', function(req, res){
