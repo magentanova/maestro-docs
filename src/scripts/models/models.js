@@ -1,13 +1,13 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import {app_name} from '../app'
-// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
-// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 
+// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 const User = Backbone.Model.extend({
 	urlRoot: '/api/users',
 	idAttribute: '_id'
 })
+
 User.register = function(email,password) {
 	return $.ajax({
 		type: 'post',
@@ -45,8 +45,6 @@ User.getCurrentUser = function() {
 
 
 export { User }
-
-// ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 
 // ^^ DO NOT TOUCH ^^
