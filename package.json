@@ -6,7 +6,8 @@
   "scripts": {
     "go": "npm run watch && npm run dev",
     "deploy": "git push origin master && git push heroku master",
-    "dev": "NODE_ENV=development node --use_strict server.js", 
+    "dev": "NODE_ENV=development node --use_strict server.js",
+    "name-project": "echo \"\\033[04mPlease enter project name (no spaces): \\033[0m\\033[32m\" && read project_name && npm config set name $project_name",
     "initdb": "mongod & npm config set name",
     "killmongo": "bash kill.sh mongo",
     "postinstall": "touch ./config/secrets.js",
@@ -14,7 +15,8 @@
     "stop": "bash kill.sh",
     "watch": "npm run watch-js && npm run watch-css && echo '\n\n===== watching js and scss files in src/, writing changes to dist/ =====\n\n'&",
     "watch-js": "./node_modules/.bin/watchify src/scripts/app.js --debug --verbose --transform babelify -o dist/assets/js/app.js&",
-    "watch-css": "./node_modules/.bin/node-sass -w --output-style compressed src/styles/style.scss dist/assets/css/style.css&"
+    "watch-css": "./node_modules/.bin/node-sass -w --output-style compressed src/styles/style.scss dist/assets/css/style.css&",
+    "init-dev": "npm run name-project && npm install"
   },
   "browserify": {
     "transform": [
