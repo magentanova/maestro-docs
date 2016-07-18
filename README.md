@@ -7,8 +7,7 @@
   - clone this repo with `git clone git@github.com:magentanova/tiy-full-stack.git THE-LOCAL-FOLDER-YOU-WANT-TO-CREATE`
   - disconnect from my remote repo and point to your own (see [Publishing](#publishing))
   - `cd` into the local folder
-  - `npm install`
-  - `npm config set name YOUR-APP-NAME`. this will ensure that mongo stores your app's data in a unique location.
+  - `npm run init-dev`
   
 
 ###Install mongodb (once)
