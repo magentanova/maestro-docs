@@ -4,10 +4,7 @@ let helpers = require('../config/helpers.js')
 
 let User = require('../db/schema.js').User
 let Post = require('../db/schema.js').Post
-
-
-apiRouter
-
+  
   apiRouter
     .get('/users', function(req, res){
       User.find(req.query , "-password", function(err, results){
@@ -42,5 +39,8 @@ apiRouter
         })
       })  
     })
+
+    // Routes for a Model(resource) should have this structure
+
 
 module.exports = apiRouter
