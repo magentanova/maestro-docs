@@ -1,4 +1,7 @@
-global.PROJECT_NAME = 'super-project'
+global.PROJECT_NAME = //« set by npm run init-dev »
+// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -65,5 +68,5 @@ app.use( '/api', apiRouter )
 app.use(appMiddleWare.errorHandler);
 
 app.listen(PORT,function() {
-	console.log('\n\n===== listening for requests on port ' + PORT + ' =====\n\n')
+  console.log('\n\n===== listening for requests on port ' + PORT + ' =====\n\n')
 })
