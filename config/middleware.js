@@ -1,8 +1,6 @@
 const checkAuth = function(req, res, next){
   if(!req.user) {
-    res.status(500).send({
-      error: 'no user logged in'
-    })
+    res.status(400).send( 'no authenticated user for current session' )
   }
   else next()
 }
