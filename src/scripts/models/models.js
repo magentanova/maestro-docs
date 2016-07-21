@@ -9,16 +9,24 @@ const UserAuthModel = Backbone.Model.extend({
 })
 
 UserAuthModel.register = function(userData) {
+	if(typeof newUserData !== 'object') {  throw new Error("User.register needs to be of type object with email & password properties") }
+	if(!newUserData.email || !newUserData.password) {  throw new Error("object needs email + password properties") }
+
 	return $.ajax({
-		type: 'post',
+		method: 'POST',
+		type: 'json',
 		url: '/auth/register',
 		data: userData
 	})
 }
 
-UserAuthModel.login = function(email,password) {
+UserAuthModel.login = function(email, password) {
+	if(!email || !password) {  throw new Error("User.login(«email», «password») method needs strings for email, password arguments") }
+	if(typeof email !== 'string' || typeof password !== 'string' ) {  throw new Error("User.login(«email», «password») email + password arguments should both be strings") }
+
 	return $.ajax({
-		type: 'post',
+		method: 'POST',
+		type: 'json',
 		url: '/auth/login',
 		data: {
 			email: email,
@@ -44,7 +52,7 @@ UserAuthModel.getCurrentUser = function() {
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 // ^^ DO NOT TOUCH ^^
 
-// but, you may extend the UserAuthModel (which is a Backbone Model)
+// but, you may extend the UserAuthModel Constructor (which is a Backbone Model)
 const User = UserAuthModel.extend({
 	initialize: function(){
 
