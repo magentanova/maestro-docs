@@ -34,11 +34,11 @@ authRouter
     if (req.user) res.json({user: req.user});
     else res.json({user: null})
   })
-  .post('/login', passport.authenticate('local'), function(req, res){}
+  .post('/login', passport.authenticate('local'), function(req, res){
       let userCopy = req.user.toObject()
       delete userCopy.password
       res.json(userCopy)         
-  )
+  })
   .get('/logout', function (req, res) {
     if (req.user) {
       // console.log(req.user)
