@@ -1,9 +1,10 @@
-global.PROJECT_NAME = 'coolproject3000'
-// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+global.PROJECT_NAME = null
 
 if (!global.PROJECT_NAME) { //« set by npm run init-dev »
 	throw new Error('no project name set. did you forget to run "npm run init-dev"?')
 }
+// x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
+
 
 
 const bodyParser = require('body-parser');
