@@ -1,4 +1,4 @@
-let Router = require('express').Router;
+ let Router = require('express').Router;
 let passport = require ('passport')
 let User = require('../db/schema.js').User
 
@@ -13,6 +13,10 @@ authRouter
 
     User.find({email: req.body.email}, function(err, results){
 
+      if (err) {
+        res.status(500).send(err)
+      }
+
       if(results !== null && results.length > 0) { 
         let record = {}
         record.msg = "record already exists" ;      
@@ -22,9 +26,14 @@ authRouter
       }
 
       newUser.save(function(err){
-        req.login(req.body, function(){
-          res.json(newUser)   
-        })
+        if (err) {
+          res.status(500).send(err)
+        }
+        else {
+          let userCopy = newUser.toObject()
+          delete userCopy.password
+          res.json(userCopy)        
+        }
       })
     })
   })
@@ -43,7 +52,7 @@ authRouter
       }
       else {
         let userCopy = JSON.parse(JSON.stringify(req.user))
-        userCopy.password = ''
+        delete userCopy.password
         res.json(userCopy)        
       }
     }
