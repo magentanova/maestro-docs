@@ -24,16 +24,17 @@ let User = require('../db/schema.js').User
 
       User.findByIdAndUpdate(req.params._id, req.body, function(err, record){
           if (err) {
-            response.status(500).send(err)
+            res.status(500).send(err)
           }
           else if (!record) {
-            response.status(400).send('no record found with that id')
+            res.status(400).send('no record found with that id')
           }
           else {
-            response.json(record)
+            res.json(Object.assign({},req.body,record))
           }
       })
     })
+
     .delete('/users/:_id', function(req, res){
       User.remove({ _id: req.params._id}, (err) => {
         if(err) return res.json(err)
