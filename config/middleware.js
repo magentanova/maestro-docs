@@ -25,8 +25,24 @@ const cookifyUser = function(req,res,next) {
   }
 }
 
+const parseQuery = function(req,res,next) {
+  if (req.query) {
+    console.log('query obj before fix',req.query)
+    for (var prop in req.query) {
+      if (prop[0] === '$') {
+        let val = req.query[prop]
+        req.query[prop] = JSON.parse(val)
+      }
+    }
+    console.log('after fix',req.query)
+  }
+  next()
+}
+
 module.exports = {
   checkAuth: checkAuth,
   errorHandler: errorHandler,
-  cookifyUser: cookifyUser
+  cookifyUser: cookifyUser,
+  parseQuery: parseQuery
 }
+
