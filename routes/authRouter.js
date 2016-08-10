@@ -38,13 +38,23 @@ authRouter
     passport.authenticate('local', function(err,user,info) {
       if (err || !user) {
         res.status(400).send('incorrect email/password combination')
+        return 
       }
       else {
-        delete user.password
-        res.json(user)
+        req.login(user,function(err) {
+          if (err) {
+            res.status(400).send(err)
+            return
+          }
+          else {
+            delete user.password
+            res.json(user)
+          }
+        })
       }
+      next()
     })(req,res,next)  
-  })
+  })  
   .get('/logout', function (req, res) {
     if (req.user) {
       // console.log(req.user)
