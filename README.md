@@ -2,14 +2,6 @@
 
 ##Getting started
 
-###Install the build environment (every time)
-
-  - clone this repo with `git clone git@github.com:magentanova/tiy-full-stack.git THE-LOCAL-FOLDER-YOU-WANT-TO-CREATE`
-  - disconnect from my remote repo and point to your own (see [Publishing](#publishing))
-  - `cd` into the local folder
-  - `npm run init-dev`
-  
-
 ###Install mongodb (once)
 
   - `brew install mongodb`
@@ -23,7 +15,7 @@
   - this chrome extension allows you to test POST requests to your api endpoints much more easily and quickly than you could by writing JavaScript. 
   - you can set headers, write JSON into the request body, and use tabs to track multiple requests at once.
 
-### Install MongoChef (once, optional)
+###Install MongoChef (once, optional)
 
   - http://3t.io/mongochef/download/core/
   - This application allows you to inspect and modify your Mongo databases allowing you to quickly read/add/edit/delete documents(records)
@@ -35,6 +27,14 @@
     4. Click `Save Connection` 
       (you should see the db available on the left panel)
     5. Click `Connect` on the bottom right to connect and inspect
+
+###Install the build environment (every time)
+
+  - clone this repo with `git clone git@github.com:magentanova/tiy-full-stack.git THE-LOCAL-FOLDER-YOU-WANT-TO-CREATE`
+  - disconnect from my remote repo and point to your own (see [Publishing](#publishing))
+  - `cd` into the local folder
+  - `npm run init-dev`
+  
 
 ##Workflow
 
