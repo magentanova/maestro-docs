@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-const createModel = mongoose.model.bind(mongoose);
-const Schema = mongoose.Schema;
 
 // ----------------------
 // USERS
 // ----------------------
-const usersSchema = new Schema({
+const usersSchema = new mongoose.Schema({
   // required for authentication: DO NOT TOUCH Or You May Get Punched
   email:     { type: String, required: true },
   password:  { type: String, required: true },
@@ -18,5 +16,5 @@ const usersSchema = new Schema({
 })
 
 module.exports = {
-  User: createModel('User', usersSchema)
+  User: mongoose.model('User', usersSchema)
 }
