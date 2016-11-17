@@ -66,4 +66,4 @@ const User = UserAuthModel.extend({
 	}
 })
 
-export { User }
+export default User
