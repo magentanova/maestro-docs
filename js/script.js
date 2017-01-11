@@ -1,6 +1,6 @@
 
 
-function documentationTemplate(json) {
+function docTemplate(json) {
 	var html = '<h2>' + json.title + '</h2>'
 	return html += json.cards.reduce(cardTemplate,'')
 }
@@ -28,9 +28,11 @@ function qs(sel) {
 }
 
 function getInstallsTemplate() {
-	var content = documentationTemplate(docsJSON.essential_installs)
-	content += documentationTemplate(docsJSON.optional_installs)
-	return content
+	return docTemplate(docsJSON.essential_installs) + docTemplate(docsJSON.optional_installs)
+}
+
+function getWorkflowTemplate() {
+	return docTemplate(docsJSON.workflow)
 }
 
 function getFrontTemplate() {
@@ -54,8 +56,8 @@ function hashController() {
 		case 'home':
 			content = getHomeTemplate()
 			break
-		case 'front':
-			content = getFrontTemplate()
+		case 'workflow':
+			content = getWorkflowTemplate()
 			break
 		case 'back':
 			content = getBackTemplate()

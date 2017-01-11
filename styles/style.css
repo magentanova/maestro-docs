@@ -41,6 +41,10 @@ ul li {
 	list-style: none;
 }
 
+ol ol {
+	list-style-type: lower-roman;
+}
+
 p,li {
 	letter-spacing: .5px;
 }
