@@ -52,6 +52,12 @@ p,li {
 code {
     background: #ddd;
     padding: .2rem;
+    margin: .1rem;
+    display: inline-block;
+}
+
+strong {
+	text-transform: uppercase;
 }
 
 .container {

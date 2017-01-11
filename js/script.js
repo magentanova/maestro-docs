@@ -36,14 +36,15 @@ function getWorkflowTemplate() {
 }
 
 function getFrontTemplate() {
-	return "<div class='card'>Front</div>"
+	return docTemplate(docsJSON.front_end)
 }
 
 function getHomeTemplate() {
 	return "<div class='card'>Home</div>"
 }
+
 function getBackTemplate() {
-	return "<div class='card'>Back</div>"
+	return docTemplate(docsJSON.back_end)
 }
 
 function hashController() {
@@ -61,6 +62,9 @@ function hashController() {
 			break
 		case 'back':
 			content = getBackTemplate()
+			break
+		case 'front':
+			content = getFrontTemplate()
 			break
 		default: 
 			location.hash = "home"
