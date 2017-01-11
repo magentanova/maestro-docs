@@ -1,3 +1,114 @@
 * {
 	box-sizing: border-box;
 }
+
+/*typography and tags*/
+
+h1,h2,h3,h4,h5,.nav-links a {
+	font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+	font-family: 'PT Serif', serif;
+}
+
+h1 {
+	font-size: 64px;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+h3 {
+	font-size: 28px;
+}
+
+p,code,a,li,code {
+	font-size: 18px;
+}
+
+a {
+	color: black;
+}
+
+ul,li {
+	text-align: left;
+	margin: 1rem 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+p,li {
+	letter-spacing: .5px;
+}
+
+code {
+    background: #ddd;
+    padding: .2rem;
+}
+
+.container {
+	max-width: 900px;
+	margin: 5rem auto;
+}
+
+
+/*header styling*/
+
+.header {
+	text-align: center;
+}
+
+.nav-links {
+	text-align: center;
+	margin: 2rem auto 0 auto;
+	width: 100%;
+	background: black;
+}
+
+.nav-links a {
+	text-decoration: none;
+	background: black;
+	color: white;
+	margin: .25rem 1rem;
+	padding: .75rem 1.5rem;
+	display: inline-block;
+}
+
+.nav-links a:hover {
+	background: white;
+	color: black;
+	/*border: 2px solid black;*/
+	cursor: pointer;
+}
+
+/*documentation styling*/
+
+.documentation h2 {
+    border: 1px solid black;
+    border-left: 0;
+    border-right: 0;
+    padding: 1rem;
+    margin-top: 4rem;
+}
+/*card styling*/
+.card {
+	-webkit-box-shadow: 1.5px 1.5px 1px 0px rgba(0,0,0,.9);
+	-moz-box-shadow: 1.5px 1.5px 1px 0px rgba(0,0,0,.9);
+	box-shadow: 1.5px 1.5px 1px 0px rgba(0,0,0,.9);
+	padding: 1rem 5rem;
+	margin: 3rem 0;
+	border: 1px solid #888;
+}
+
+.card p, .card p a {
+	font-size: 14px;
+    margin-top: -1rem;
+    letter-spacing: .5px;
+    text-align: left;	
+}
+
+
