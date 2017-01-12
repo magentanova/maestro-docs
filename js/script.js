@@ -6,7 +6,6 @@ function docTemplate(json) {
 }
 
 function cardTemplate(snowball,obj) {
-	console.log(obj)
 	var content = "",
 		listType = obj.steps.length > 1 ? "ol>" : "ul>"
 	content += "<div class='card'>"
