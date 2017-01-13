@@ -17,7 +17,7 @@ window.docsJSON = {
 			{
 				heading: "What is in it?",
 				steps: [
-					"You can build your front-end application with whatever libraries and frameworks you want, but Maestro comes out of the box with React and Backbone already installed. On the back end, the setup is pretty tightly coupled to a MongoDB database; a Mongoose interface to create schemas and models that work with that database; an Express Router; and Passport for user authentication. All these come pre-installed.<br><br> Maestro itself was built using Yeoman generators, which allow developers to write directory structures and file content according to a template."
+					"You can build your front-end application with whatever libraries and frameworks you want, but Maestro comes out of the box with React and Backbone already installed. On the back end, the setup is pretty tightly coupled to a MongoDB database; a Mongoose interface to create schemas and models that work with that database; an Express Router; and Passport for user authentication. All these come pre-installed.<br><br> Maestro itself was built using Yeoman generators, which allow developers to write directory structures and file content according to a template. The GitHub page for <a href='https://github.com/magentanova/generator-maestro'>generator-maestro is here</a>."
 				]
 			},
 			{
