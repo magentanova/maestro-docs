@@ -8,6 +8,10 @@ h1,h2,h3,h4,h5,.nav-links a {
 	font-family: "Josefin Sans", sans-serif;
 }
 
+html {
+	position: relative;
+}
+
 body {
 	font-family: 'PT Serif', serif;
 }
@@ -47,13 +51,13 @@ ol ol {
 
 p,li {
 	letter-spacing: .5px;
+	line-height: 1.8em;
 }
 
 code {
     background: #ddd;
     padding: .2rem;
     margin: .1rem;
-    display: inline-block;
 }
 
 strong {
@@ -104,6 +108,22 @@ strong {
     padding: 1rem;
     margin-top: 4rem;
 }
+
+.documentation > p {
+	text-align: left;
+	margin: 0 auto;
+	margin-bottom: 1rem;
+}
+
+.documentation > p:last-child {
+	margin-bottom: 0;
+}
+
+.preamble {
+	width: 85%;
+	margin: auto;
+}
+
 /*card styling*/
 .card {
 	-webkit-box-shadow: 1.5px 1.5px 1px 0px rgba(0,0,0,.9);
@@ -121,4 +141,9 @@ strong {
     text-align: left;	
 }
 
+.footnote {
+	position: absolute;
+	bottom: 10px;
+	left: 100px;
+}
 

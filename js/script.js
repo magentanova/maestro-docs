@@ -2,7 +2,8 @@
 
 function docTemplate(json) {
 	var html = '<h2>' + json.title + '</h2>'
-	return html += json.cards.reduce(cardTemplate,'')
+	html += json.cards.reduce(cardTemplate,'')
+	return html += json.preamble ? "<p class='preamble'><i>" + json.preamble + "</i></p>" : ''
 }
 
 function cardTemplate(snowball,obj) {
@@ -39,11 +40,15 @@ function getFrontTemplate() {
 }
 
 function getHomeTemplate() {
-	return "<div class='card'>Home</div>"
+	return docTemplate(docsJSON.home)
 }
 
 function getBackTemplate() {
 	return docTemplate(docsJSON.back_end)
+}
+
+function getDeployTemplate() {
+	return docTemplate(docsJSON.deploy)
 }
 
 function hashController() {
@@ -64,6 +69,9 @@ function hashController() {
 			break
 		case 'front':
 			content = getFrontTemplate()
+			break
+		case 'deploy':
+			content = getDeployTemplate()
 			break
 		default: 
 			location.hash = "home"
