@@ -17,7 +17,7 @@ window.docsJSON = {
 			{
 				heading: "What is in it?",
 				steps: [
-					"You can build your front-end application with whatever libraries and frameworks you want, but Maestro comes out of the box with React and Backbone already installed. On the back end, the setup is pretty tightly coupled to a MongoDB database; a Mongoose interface to create schemas and models that work with that database; an Express Router; and Passport for user authentication. All these come pre-installed.<br><br> Maestro itself was built using Yeoman generators, which allow developers to write directory structures and file content according to a template. The GitHub page for <a href='https://github.com/magentanova/generator-maestro'>generator-maestro is here</a>."
+					"You can build your front-end application with whatever libraries and frameworks you want, but Maestro comes out of the box with React and Backbone already installed. On the back end, the setup is pretty tightly coupled to a MongoDB database; a Mongoose interface to create schemas and models that work with that database; an Express Router; and Passport for user authentication. All these come pre-installed.<br><br> Maestro itself was built using Yeoman generators, which allow developers to write directory structures and file content according to a template. The GitHub page for <a target=\"_blank\" href='https://github.com/magentanova/generator-maestro'>generator-maestro is here</a>."
 				]
 			},
 			{
@@ -33,7 +33,7 @@ window.docsJSON = {
 		cards: [
 			{
 				heading: "Install Yeoman",
-				subheading: "<a href='https://yeoman.io'>Yeoman</a> is a scaffolding tool that helps developers put together directory structures and file content according to a template.",
+				subheading: "<a target=\"_blank\" href='https://yeoman.io'>Yeoman</a> is a scaffolding tool that helps developers put together directory structures and file content according to a template.",
 				steps: [
 					"Enter the command <code>npm install -g yeoman</code> from any directory."
 				]
@@ -61,14 +61,14 @@ window.docsJSON = {
 		cards: [
 			{
 				heading: "Install Postman",
-				subheading: "<a href='https://getpostman.com'>This chrome extension</a> allows you to test POST requests to your api endpoints much more easily and quickly than you could by writing JavaScript. You can set headers, write JSON into the request body, and use tabs to track multiple requests at once.",
+				subheading: "<a target=\"_blank\" href='https://getpostman.com'>This chrome extension</a> allows you to test POST requests to your api endpoints much more easily and quickly than you could by writing JavaScript. You can set headers, write JSON into the request body, and use tabs to track multiple requests at once.",
 				steps: []
 			},
 			{
 				heading: "Install MongoChef",
 				subheading: "This application allows you to inspect and modify your Mongo databases, so you can quickly read, add, edit and delete documents/records.",
 				steps: [
-					"Install <a href='http://3t.io/mongochef/download/core/'>from the MongoChef site</a>.",
+					"Install <a target=\"_blank\" href='http://3t.io/mongochef/download/core/'>from the MongoChef site</a>.",
 					"Open the application.",
 					"Go to <strong>Connect</strong> --> <strong>New Connection</strong>.",
 					"Enter name of database (e.g. <strong>My Localhost DB</strong>).",
@@ -108,7 +108,7 @@ window.docsJSON = {
 					"From within your new project's directory, enter <code>npm run go</code>. This sets several things in motion: <ol>",
 					"Initializes a file watcher for the Javascript files in <code>src/scripts</code>, so that every time you save a file in this directory, everything in <code>src/scripts</code> will be (a) transpiled from ES6 JavaScript and JSX to old-school ES5 Javascript and pure JS. It bundles all of this rewritten code, including all imported libraries, into the file at <code>dist/assets/js/app.js</code>",
 					"Initializes a similar file watcher for the SCSS files in <code>src/styles</code>, which are bundled, transpiled into CSS, and written to the file at <code>dist/assets/style.css</code>.",
-					"Starts a local server for this project by running the <code>server.js</code> script. The server will run on port 3000, so you'll ping it, as you develop your project, by visiting <a href='http://localhost:3000'>localhost:3000</a>.<br><br>NOTE: At this stage your server will try to connect to the appropriate database partition (defined by your project name), so you will get an error if your database is not already running.</ol>",
+					"Starts a local server for this project by running the <code>server.js</code> script. The server will run on port 3000, so you'll ping it, as you develop your project, by visiting <a target=\"_blank\" href='http://localhost:3000'>localhost:3000</a>.<br><br>NOTE: At this stage your server will try to connect to the appropriate database partition (defined by your project name), so you will get an error if your database is not already running.</ol>",
 					"If your server can't find a port to connect to, it will error out. This may mean that you're already running an instance of the server. You can stop all currently running Node processes with <code>npm run stop</code>, then repeat step 2."
 				]
 			}
@@ -123,7 +123,7 @@ window.docsJSON = {
 					"The <strong>only</strong> place that you will write CSS or JavaScript is in the <code>src/</code> folder. JavaScript goes in <code>src/scripts</code> and CSS goes in <code>src/styles</code>.",
 					"You can import and export your own JS modules within <code>src/scripts</code>, as long as you use relative paths, e.g. <code>import User from './models/userModel'</code>.",
 					"Every time you save a file in <code>src/scripts</code>, all your code, including imported libraries, will be transpiled and bundled into the file at <code>dist/assets/js/app.js</code>. Similar action is taken for your CSS work. This is due to the action of a Node tool employed by Maestro called Watchify.",
-					"When you visit <a href='localhost:3000'>localhost:3000</a>, or when someone visits your deployed site, your server will respond with the <ode>index.html</code> file in <code>dist/</code>. That HTML file links to the bundled, transpiled JS and CSS files that were written to <code>dist/</code>.",
+					"When you visit <a target=\"_blank\" href='localhost:3000'>localhost:3000</a>, or when someone visits your deployed site, your server will respond with the <ode>index.html</code> file in <code>dist/</code>. That HTML file links to the bundled, transpiled JS and CSS files that were written to <code>dist/</code>.",
 					"With few exceptions, you <strong>need never</strong> edit the files that are in <code>dist/</code>. You only write code to <code>src/</code>, and you depend on a little robot to transfer that work to <code>dist/</code>."
 				]
 			},
@@ -158,7 +158,7 @@ window.docsJSON = {
 				subheading: 'In order to start saving data records to your database, for example a "listing", if your app stores product listings, you need to write a <strong>schema</strong>, which describes the properties that that record will have.',
 				steps: [
 					"Open the file at <code>db/schema.js</code>.",
-					"Follow the example of a <code>userSchema</code> that comes with the framework. For a full explanation of the allowable syntax for a schema definition, you should visit the appropriate section of the <a href='http://mongoosejs.com/docs/guide.html'>Mongoose docs</a>.",
+					"Follow the example of a <code>userSchema</code> that comes with the framework. For a full explanation of the allowable syntax for a schema definition, you should visit the appropriate section of the <a target=\"_blank\" href='http://mongoosejs.com/docs/guide.html'>Mongoose docs</a>.",
 					"Include a model based on your schema in the object exported under <code>module.exports</code>, again following the <code>userSchema</code> example."
 				]
 			},
@@ -169,8 +169,8 @@ window.docsJSON = {
 					"Import a model  at the top of the file, following the <code>User</code> example.",
 					"Create five CRUD routes: create one, read one, read many, update one, and delete one.",
 					"The code you write here is utilizing two libraries: Express and Mongoose.<ol>",
-					"The <a href='https://expressjs.com/en/guide/routing.html'>Express Router</a>, which allows you to match a request type (GET, POST, PUT, DELETE) with a route path. The callback function you use here gives you access to the incoming request and the outgoing response.",
-					"The model you use inside that callback is a wrapper defined by Mongoose and connected to the Mongoose schema you wrote. The methods on that model, like <code>.findById()</code> and <code>.save()</code>, are described in the <a href='http://mongoosejs.com/docs/guide.html'>Mongoose docs</a>.</ol>",
+					"The <a target=\"_blank\" href='https://expressjs.com/en/guide/routing.html'>Express Router</a>, which allows you to match a request type (GET, POST, PUT, DELETE) with a route path. The callback function you use here gives you access to the incoming request and the outgoing response.",
+					"The model you use inside that callback is a wrapper defined by Mongoose and connected to the Mongoose schema you wrote. The methods on that model, like <code>.findById()</code> and <code>.save()</code>, are described in the <a target=\"_blank\" href='http://mongoosejs.com/docs/guide.html'>Mongoose docs</a>.</ol>",
 					"That's it. You're now ready to test with Postman and start writing front-end code to fetch and save records."
 				]
 			}
@@ -187,8 +187,8 @@ window.docsJSON = {
 				heading: "Deploy to Heroku",
 				subheading: '<p class="footnote">* Or "ephemeral sibling" or "denim carjack" or "shifty surgeon". Something like "cleansing birthmark" or "aluminum waistband" or "viscous fortune." Best to give it your own name.</p>',
 				steps: [
-					"<a href='https://signup.heroku.com'>Create an account</a> with heroku. You may be prompted at some point to give them some credit card information. You can safely do this. They won't charge your account unless at some point you purchase a feature that costs money.",
-					"Download and install the <a href='https://devcenter.heroku.com/articles/heroku-cli'>Heroku command line tools</a>.",
+					"<a target=\"_blank\" href='https://signup.heroku.com'>Create an account</a> with heroku. You may be prompted at some point to give them some credit card information. You can safely do this. They won't charge your account unless at some point you purchase a feature that costs money.",
+					"Download and install the <a target=\"_blank\" href='https://devcenter.heroku.com/articles/heroku-cli'>Heroku command line tools</a>.",
 					'From the directory where your project lives, enter <code>heroku create [YOUR-PROJECT-NAME]</code>. If you leave out the project name, Heroku will generate a weird project name for you. Something like "weeping patio" or "distributive catcall"*.',
 					"<code>heroku create</code> sets up a new <code>remote</code> location for your project. Most git projects have at least one <code>remote</code> that they're connected to. Each remote has a nickname. The remote version of your repository that's stored on GitHub is probably called \"origin\". The Heroku remote will be called simply \"Heroku\".",
 					"You can enter <code>git remote -v</code> to see the Heroku URL where your project will live.",
