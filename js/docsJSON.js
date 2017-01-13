@@ -5,7 +5,7 @@ window.docsJSON = {
 			{
 				heading: "What is Maestro?",
 				steps: [
-				"Maestro is a scaffolding framework and build system for full-stack JavaScript projects. With just a couple of shell commands, you get the full directory structure that you'll need, a ton of boilerplate code that does things like set up an Express server and connect it to a database, and several templated files that are ready to be modified. The idea is to bring developers as close to the starting line as possible, so they can quickly begin writing schemas and REST API routes on the back-end, as well as an MVC application on the front-end to consume that API."
+				"Maestro is a scaffolding framework and build system for full-stack JavaScript projects. With just a couple of shell commands, you get the full directory structure that you'll need, a ton of boilerplate code that does things like set up an Express server and connect it to a database, several templated files that are ready to be modified, and a built-in user authentication system. The idea is to bring developers as close to the starting line as possible, so they can quickly begin writing schemas and REST API routes on the back-end, as well as an MVC application on the front-end to consume that API."
 				]
 			},
 			{
@@ -17,7 +17,7 @@ window.docsJSON = {
 			{
 				heading: "What is in it?",
 				steps: [
-					"You can build your front-end application with whatever libraries and frameworks you want, but Maestro comes out of the box with React and Backbone already installed. On the back end, the setup is pretty tightly coupled to a MongoDB database; a Mongoose interface  to create schemas and models that work with that database; an Express Router; and Passport for user authentication. All these come pre-installed.<br><br> Maestro itself was built using Yeoman generators, which allow developers to write directory structures and file content according to a template."
+					"You can build your front-end application with whatever libraries and frameworks you want, but Maestro comes out of the box with React and Backbone already installed. On the back end, the setup is pretty tightly coupled to a MongoDB database; a Mongoose interface to create schemas and models that work with that database; an Express Router; and Passport for user authentication. All these come pre-installed.<br><br> Maestro itself was built using Yeoman generators, which allow developers to write directory structures and file content according to a template."
 				]
 			},
 			{
