@@ -35,7 +35,7 @@ window.docsJSON = {
 				heading: "Install Yeoman",
 				subheading: "<a target=\"_blank\" href='https://yeoman.io'>Yeoman</a> is a scaffolding tool that helps developers put together directory structures and file content according to a template.",
 				steps: [
-					"Enter the command <code>npm install -g yeoman</code> from any directory."
+					"Enter the command <code>npm install -g yo</code> from any directory."
 				]
 			},
 			{
