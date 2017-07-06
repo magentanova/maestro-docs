@@ -23,7 +23,7 @@ window.docsJSON = {
 			{
 				heading: "But why though?",
 				steps: [
-					"Maestro was designed by Justin Richards and Travis Hubbard for Front-end Engineering Students at The Iron Yard Academy. It functions as an effective template for nascent developers, but also as a helpful expedient for non-beginners who want to get to that starting line as quickly as possible."
+					"Maestro was designed by Justin Richards and Travis Hubbard as a teaching tool and starter kit for students learning how to code. It functions as an effective template for nascent developers, but also as a helpful expedient for non-beginners who want to get to that starting line as quickly as possible."
 				]
 			}
 		]
